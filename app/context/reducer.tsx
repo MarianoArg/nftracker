@@ -1,7 +1,6 @@
-import type { State, Actions } from "./types";
+import type { State, Actions, UpdateDraftPayloadType } from "./types";
 import { ActionTypes } from "./types";
 import { setAddressData, getAddressData } from "./storage";
-import type { Token } from "~/types/collection";
 
 export default function GlobalStateReducer(state: State, action: Actions) {
   switch (action.type) {
@@ -48,13 +47,14 @@ export default function GlobalStateReducer(state: State, action: Actions) {
       };
     }
     case ActionTypes.SET_DRAFT_COLLECTION: {
+      const payload = action.payload as UpdateDraftPayloadType;
       if (state.connectWallet.address) {
         setAddressData(state.connectWallet.address, {
           ...state,
           draftCollection: {
             ...state.draftCollection,
-            title: action.payload.title as string,
-            items: action.payload.items as Token[],
+            title: payload.title,
+            items: payload.items,
           },
         });
       }
@@ -63,8 +63,8 @@ export default function GlobalStateReducer(state: State, action: Actions) {
         ...state,
         draftCollection: {
           ...state.draftCollection,
-          title: action.payload.title as string,
-          items: action.payload.items as Token[],
+          title: payload.title,
+          items: payload.items,
         },
       };
     }

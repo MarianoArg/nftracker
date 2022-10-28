@@ -1,4 +1,4 @@
-import { useGlobalState, useGlobalStateUpdater } from "~/context";
+import { useGlobalStateUpdater } from "~/context";
 import React from "react";
 import { useImmer } from "use-immer";
 import type {
@@ -58,7 +58,7 @@ export default function CollectionBuilder({
     });
   };
 
-  const getData = (prop) => {
+  const getData = (prop: { data?: Record<string, any> }) => {
     return prop?.data?.current ?? {};
   };
 
@@ -72,8 +72,8 @@ export default function CollectionBuilder({
   const { collectionItems } = data;
 
   React.useEffect(() => {
-    const saveDraft = (e) => {
-      actions.updateDraftCollection(collectionItems);
+    const saveDraft = () => {
+      actions.updateDraftCollection({ items: collectionItems });
     };
 
     window.addEventListener("beforeunload", saveDraft);
@@ -133,7 +133,7 @@ export default function CollectionBuilder({
     // This is where the clone occurs. We're taking the id that was assigned to
     // sidebar field and reusing it for the spacer that we insert to the canvas.
     if (activeData.fromSidebar && !spacerInsertedRef.current) {
-      const overData = getData(over);
+      const overData = getData(over ?? {});
 
       const spacer = createSpacer({
         id: active.id as string,

@@ -1,3 +1,4 @@
+import type { FormMethod } from "@remix-run/react";
 import { Form, useSubmit, useTransition } from "@remix-run/react";
 import { useDroppable } from "@dnd-kit/core";
 import TokenCard from "~/components/CustomCollection/TokenCard";
@@ -41,7 +42,7 @@ export default function CollectionItemsBox({
     const formData = new FormData(form);
     formData.set("items", JSON.stringify(items));
     submit(formData, {
-      method: form.getAttribute("method") ?? form.method,
+      method: (form.getAttribute("method") ?? form.method) as FormMethod,
       action: form.getAttribute("action") ?? form.action,
     });
   };

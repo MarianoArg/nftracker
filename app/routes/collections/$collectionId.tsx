@@ -6,7 +6,7 @@ import { getCollection, updateCollection } from "~/models/collection.server";
 import { getUserAddress, requireUserAddress } from "~/session.server";
 import CollectionBuilder from "~/components/CustomCollection/CollectionBuilder";
 import { useTokens } from "@reservoir0x/reservoir-kit-ui";
-import type { CustomCollection } from "~/types/collection";
+import type { CustomCollection, CustomToken } from "~/types/collection";
 import { useGlobalStateUpdater } from "~/context";
 import React from "react";
 
@@ -14,7 +14,7 @@ export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
   const title = formData.get("collection_name");
   const id = formData.get("id");
-  const items = JSON.parse(formData.get("items") as string);
+  const items: CustomToken[] = JSON.parse(formData.get("items") as string);
   const userAddress = await getUserAddress(request);
   const collections = items?.map((c) => c.token);
   if (items.length === 0) {
@@ -81,6 +81,7 @@ export default function CollectionDetailsPage() {
     ),
   });
 
+  //@ts-ignore
   const mappedTokens = tokens?.map(({ token, market }) => ({
     ...token,
     id: token.tokenId,

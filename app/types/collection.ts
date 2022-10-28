@@ -3,11 +3,19 @@ import type { paths } from "@reservoir0x/reservoir-kit-client";
 export type Collections =
   paths["/collections/v5"]["get"]["responses"]["200"]["schema"];
 
-export type Collection =
+export type CollectionResponse =
   paths["/collections/v5"]["get"]["responses"]["200"]["schema"]["collections"];
 
 export type TokenResponse =
   paths["/tokens/v5"]["get"]["responses"]["200"]["schema"]["tokens"];
+
+export type Collection = {
+  id: string;
+  name?: string;
+  image?: string;
+  banner?: string;
+  createdAt?: string;
+};
 
 export type Market = {
   floorAsk?: {
@@ -43,10 +51,7 @@ export type Token = {
   isFlagged: boolean;
   rarityRank?: number;
   rarity?: number;
-  collection: {
-    name?: string;
-    id: string;
-  };
+  collection: Collection;
   lastSell?: {
     value?: number;
   };

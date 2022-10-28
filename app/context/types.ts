@@ -25,10 +25,15 @@ export type Actions = {
   payload?: unknown;
 };
 
+export type UpdateDraftPayloadType = {
+  title?: string;
+  items: Token[];
+};
+
 export type ActionCreators = {
   connectWallet: (data: string) => void;
   disconnectWallet: () => void;
   setCollectionId: (id: string) => void;
-  updateDraftCollection: (data: { title?: string; items: Token[] }) => void;
+  updateDraftCollection: (data: UpdateDraftPayloadType) => void;
   init: (address?: string) => void;
 };

@@ -11,7 +11,8 @@ import type { paths } from "@reservoir0x/reservoir-kit-client";
 const baseURL =
   typeof process !== "undefined"
     ? process.env.RESERVOIR_BASE_URL
-    : window.ENV.RESERVOIR_BASE_URL;
+    : // @ts-ignore
+      window.ENV.RESERVOIR_BASE_URL;
 
 export default function usePaginatedCollections(fallback?: Collections) {
   const { ref, inView } = useInView();

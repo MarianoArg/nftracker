@@ -1,4 +1,4 @@
-import type { Token } from "~/types/collection";
+import type { UpdateDraftPayloadType } from "./types";
 import { ActionTypes } from "./types";
 
 // Action creators
@@ -15,10 +15,7 @@ export function disconnectWallet() {
   };
 }
 
-export function updateDraftCollection(data: {
-  title?: string;
-  items: Token[];
-}) {
+export function updateDraftCollection(data: UpdateDraftPayloadType) {
   return {
     type: ActionTypes.SET_DRAFT_COLLECTION,
     payload: data,

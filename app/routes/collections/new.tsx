@@ -5,11 +5,12 @@ import invariant from "tiny-invariant";
 import { createCollection } from "~/models/collection.server";
 import { getUserAddress } from "~/session.server";
 import CollectionBuilder from "~/components/CustomCollection/CollectionBuilder";
+import type { CustomToken } from "~/types/collection";
 
 export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
   const title = formData.get("collection_name");
-  const items = JSON.parse(formData.get("items") as string);
+  const items: CustomToken[] = JSON.parse(formData.get("items") as string);
 
   const userAddress = await getUserAddress(request);
   const tokenIds = items?.map((c) => c?.token);

@@ -7,7 +7,9 @@ import { v4 as uuidv4 } from "uuid";
 import { useTokens } from "@reservoir0x/reservoir-kit-ui";
 import { useInView } from "react-intersection-observer";
 
+// @ts-ignore
 const mergeRefs = (...refs) => {
+  // @ts-ignore
   return (node) => {
     for (const ref of refs) {
       if (ref) {
@@ -47,14 +49,17 @@ export default function TokenSelect({
     <ScrollArea.Root className="box-border h-[620px] w-[294px] overflow-hidden bg-[#22263c] p-2">
       <ScrollArea.Viewport className="flex h-full w-full">
         <div className="flex w-full flex-col items-center justify-between gap-2 rounded-md">
-          {tokens?.map(({ token, market }, index, arr) => (
-            <DraggableCollectionToken
-              key={token?.tokenId}
-              isDisabled={selectedTokens.includes(token?.tokenId)}
-              paginationRef={index === arr.length - 5 ? ref : undefined}
-              tokenInfo={{ ...token, id: token?.tokenId, market }}
-            />
-          ))}
+          {
+            // @ts-ignore
+            tokens?.map(({ token, market }, index, arr) => (
+              <DraggableCollectionToken
+                key={token?.tokenId}
+                isDisabled={selectedTokens.includes(token?.tokenId)}
+                paginationRef={index === arr.length - 5 ? ref : undefined}
+                tokenInfo={{ ...token, id: token?.tokenId, market }}
+              />
+            ))
+          }
         </div>
       </ScrollArea.Viewport>
       <ScrollArea.Scrollbar orientation="vertical">

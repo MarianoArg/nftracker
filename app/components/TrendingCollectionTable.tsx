@@ -153,6 +153,7 @@ export default TrendingCollectionTable;
 function processCollection(
   collection:
     | NonNullable<
+        //@ts-ignore
         NonNullable<Props["fallback"]["collections"]>["collections"]
       >[0]
     | undefined

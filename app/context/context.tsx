@@ -1,7 +1,7 @@
 import React from "react";
 import globalStateReducer from "./reducer";
 import InitialState from "./state";
-import type { State, ActionCreators } from "./types";
+import type { State, ActionCreators, UpdateDraftPayloadType } from "./types";
 import {
   connectWallet,
   disconnectWallet,
@@ -9,7 +9,6 @@ import {
   setCollectionId,
   init,
 } from "./actions";
-import type { Token } from "~/types/collection";
 import { useImmerReducer } from "use-immer";
 import { useAccount } from "wagmi";
 
@@ -38,7 +37,7 @@ export default function GlobalStateProvider({ children }: ProviderProps) {
       connectWallet: (data: string) => dispatch(connectWallet(data)),
       disconnectWallet: () => dispatch(disconnectWallet()),
       setCollectionId: (id: string) => dispatch(setCollectionId(id)),
-      updateDraftCollection: (data: { title?: string; items: Token[] }) =>
+      updateDraftCollection: (data: UpdateDraftPayloadType) =>
         dispatch(updateDraftCollection(data)),
     }),
     []

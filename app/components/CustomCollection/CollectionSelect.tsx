@@ -19,11 +19,13 @@ export default function CollectionSelect({ onCollectionChange }: SelectProps) {
     : [];
   const [selectedCollection, setSelectedCollection] =
     React.useState<Collection | null>(
-      mappedCollections?.find((c) => c.id === draftCollection.collectionId)
+      (mappedCollections as Collection[])?.find(
+        (c) => c?.id === draftCollection.collectionId
+      ) ?? null
     );
 
   const handleChange = (id: string) => {
-    const selected = mappedCollections.find((c) => c.id === id);
+    const selected = mappedCollections.find((c) => c?.id === id);
     setSelectedCollection(selected as Collection);
     setCollectionId(id);
     onCollectionChange(id);
@@ -62,8 +64,8 @@ export default function CollectionSelect({ onCollectionChange }: SelectProps) {
               <Select.Viewport className="flex w-full flex-col gap-2">
                 {mappedCollections?.map((collection, index, arr) => (
                   <Select.Item
-                    key={collection.id}
-                    value={collection.id as string}
+                    key={collection?.id}
+                    value={collection?.id as string}
                     asChild
                   >
                     <div
@@ -75,7 +77,7 @@ export default function CollectionSelect({ onCollectionChange }: SelectProps) {
                         src={collection?.image}
                         className="h-6 w-6 rounded-full object-cover"
                       />
-                      <Select.ItemText>{collection.name}</Select.ItemText>
+                      <Select.ItemText>{collection?.name}</Select.ItemText>
                       <Select.ItemIndicator />
                     </div>
                   </Select.Item>
