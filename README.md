@@ -27,7 +27,7 @@ Before this project, I had no idea at all (and I still don't lol) about Web3 and
 
 In regards to the **drag-&-drop** functionallity, I find [dnd-kit](https://dndkit.com/) as the way to go nowadays, I used it before in some demos as well as in the last project I worked, with amazing results. So no doubt on what to use for this feature.
 
-[SWR](https://swr.vercel.app/) and [Radix](https://www.radix-ui.com/) were already part the Web3 dependencies, so I took advantage of those which are amazing tools and were a good fit for what I needed for this small project.
+[SWR](https://swr.vercel.app/) and [Radix](https://www.radix-ui.com/) were already part the Web3 tools dependencies used in this project, so I took advantage of those which are amazing tools and were a good fit for what I needed for this small project.
 
 #### What about the design?
 
