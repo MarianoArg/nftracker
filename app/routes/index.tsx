@@ -6,7 +6,6 @@ import setParams from "~/lib/params";
 import type { paths } from "@reservoir0x/reservoir-kit-client";
 import type { LoaderArgs } from "@remix-run/server-runtime";
 import { useLoaderData } from "@remix-run/react";
-import HeroImage from "~/images/hero-image.jpeg";
 
 export async function loader({ request }: LoaderArgs) {
   const options: RequestInit | undefined = {};
@@ -52,14 +51,6 @@ export default function Index() {
   return (
     <div className="min-h-screen w-full bg-[#100E1A]">
       <main className="relative min-h-screen w-full flex-col sm:flex sm:items-center sm:justify-center">
-        {/* <div className="absolute top-10 right-20 flex h-[500px] w-[500px] items-center justify-center opacity-70">
-          <img
-            className="h-11/12 w-11/12 object-cover"
-            src={HeroImage}
-            alt="Sonic Youth On Stage"
-          />
-          <div className="from-bg-[#100E1A] absolute inset-0 bg-gradient-radial to-transparent mix-blend-overlay" />
-        </div> */}
         <div className="relative mt-8 flex w-full justify-between sm:mt-20 sm:max-w-screen-2xl sm:px-32 sm:pb-16 sm:pt-8">
           <div className="w-9/12 text-7xl text-white sm:max-w-[700px]">
             <h2>

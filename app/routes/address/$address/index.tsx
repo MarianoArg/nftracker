@@ -1,5 +1,5 @@
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
-import { json, redirect } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { useCatch, useLoaderData, Link } from "@remix-run/react";
 import invariant from "tiny-invariant";
 
