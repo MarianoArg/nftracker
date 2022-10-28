@@ -17,7 +17,7 @@ const SortTrendingCollections: FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { collections } = usePaginatedCollections();
   const [open, setOpen] = useState(false);
-  const [sortSelection, setSortSelection] = useState<Options>("Last 24 Hours");
+  const [sortSelection, setSortSelection] = useState<Options>("Last 7 Days");
   const sort = searchParams.get("sort");
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const SortTrendingCollections: FC = () => {
       setSortSelection(options[sort]);
       return;
     }
-    setSortSelection("Last 24 Hours");
+    setSortSelection("Last 7 Days");
   }, [sort]);
 
   return (

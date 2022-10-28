@@ -18,6 +18,7 @@ export async function loader({ request }: LoaderArgs) {
   if (reservoirApiKey) {
     options.headers = {
       "x-api-key": reservoirApiKey,
+      "Access-Control-Allow-Origin": "*",
     };
   }
 

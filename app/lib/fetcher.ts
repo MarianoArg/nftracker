@@ -4,6 +4,18 @@
  * @returns The API's response
  */
 export default async function fetcher(href: string) {
-  const res = await fetch(href);
+  const options: RequestInit | undefined = {};
+
+  const reservoirApiKey =
+    typeof process !== "undefined"
+      ? process.env.RESERVOIR_API_KEY
+      : window.ENV.RESERVOIR_API_KEY;
+
+  if (reservoirApiKey) {
+    options.headers = {
+      "x-api-key": reservoirApiKey,
+    };
+  }
+  const res = await fetch(href, options);
   return res.json();
 }
