@@ -7,6 +7,7 @@ import {
 } from "@rainbow-me/rainbowkit";
 import type { ReactNode } from "react";
 import React from "react";
+import { useFetcher } from "@remix-run/react";
 
 export type UnconfigurableMessageOptions = {
   address: string;
@@ -31,8 +32,10 @@ export function RainbowKitAuthProvider({
   enabled = true,
   status,
 }: RainbowKitSiweNextAuthProviderProps) {
+  const fetcher = useFetcher();
   const [sessionStatus, setSessionStatus] =
     React.useState<AuthenticationStatus>(status ?? "loading");
+
   const adapter = React.useMemo(
     () =>
       createAuthenticationAdapter({
@@ -61,7 +64,7 @@ export function RainbowKitAuthProvider({
           });
         },
 
-        getMessageBody: ({ message }) => {
+        getMessageBody: ({ message }: { message: SiweMessage }) => {
           return message.prepareMessage();
         },
 
@@ -82,7 +85,7 @@ export function RainbowKitAuthProvider({
         },
 
         signOut: async () => {
-          await fetch("/api/logout", { method: "POST" });
+          fetcher.submit(null, { action: "/api/logout", method: "post" });
         },
       }),
     []

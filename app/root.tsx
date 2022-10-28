@@ -37,6 +37,7 @@ import { RainbowKitAuthProvider } from "./rainbowKitAuthProvider";
 import { getUserAddress } from "./session.server";
 import Footer from "~/components/Footer";
 import { ToastProvider } from "~/components/Toast";
+import React from "react";
 
 export const links: LinksFunction = () => {
   return [
@@ -54,17 +55,12 @@ export const meta: MetaFunction = () => ({
 
 export async function loader({ request }: LoaderArgs) {
   const address = await getUserAddress(request);
-  console.log("address in root", address);
+
   return json({
     ENV: getEnv(),
     status: address ? "authenticated" : "unauthenticated",
   });
 }
-
-const alchemyApiKey =
-  typeof process !== "undefined"
-    ? process.env.ALCHEMY_API_KEY
-    : window.ENV.ALCHEMY_API_KEY;
 
 const theme = darkTheme({
   headlineFont: "Sans Serif",
@@ -72,28 +68,53 @@ const theme = darkTheme({
   primaryColor: "#323aa8",
   primaryHoverColor: "#252ea5",
 });
-// Set up chains
-const { chains, provider } = configureChains(
-  [chain.mainnet],
-  [
-    ...(alchemyApiKey ? [alchemyProvider({ apiKey: alchemyApiKey })] : []),
-    publicProvider(),
-  ]
-);
-
-const { connectors } = getDefaultWallets({
-  appName: "Pixel Challenge",
-  chains,
-});
 
 export default function App() {
   const { ENV, status } = useLoaderData();
 
-  // Set up connectors
-  const wagmiClient = createClient({
-    autoConnect: true,
-    provider,
-    connectors,
+  // Remix modules cannot have side effects so the initialization of `wagmi`
+  // client happens during render, but the result is cached via `useState`
+  // and a lazy initialization function.
+  // See: https://remix.run/docs/en/v1/guides/constraints#no-module-side-effects
+  const [{ wagmiClient, chains }] = React.useState(() => {
+    const testChains =
+      ENV.PUBLIC_ENABLE_TESTNETS === "true"
+        ? [chain.goerli, chain.kovan, chain.rinkeby, chain.ropsten]
+        : [];
+
+    // Set up chains
+    const { chains, provider } = configureChains(
+      [
+        chain.mainnet,
+        chain.polygon,
+        chain.optimism,
+        chain.arbitrum,
+        ...testChains,
+      ],
+      [
+        ...(ENV.ALCHEMY_API_KEY
+          ? [alchemyProvider({ apiKey: ENV.ALCHEMY_API_KEY })]
+          : []),
+        publicProvider(),
+      ]
+    );
+
+    // Set up connectors
+    const { connectors } = getDefaultWallets({
+      appName: "Pixel Challenge",
+      chains,
+    });
+
+    const wagmiClient = createClient({
+      autoConnect: true,
+      provider,
+      connectors,
+    });
+
+    return {
+      wagmiClient,
+      chains,
+    };
   });
 
   return (

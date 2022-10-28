@@ -9,7 +9,7 @@ import {
 } from "wagmi";
 import EthAccount from "./EthAccount";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { Link } from "@remix-run/react";
+import { Link, useSubmit } from "@remix-run/react";
 import { HiOutlineLogout } from "react-icons/hi";
 import FormatEth from "./FormatEth";
 import ConnectWalletButton from "./ConnectWalletButton";
@@ -18,6 +18,7 @@ import { useGlobalStateUpdater } from "~/context";
 
 const ConnectWallet: FC = () => {
   const account = useAccount();
+  const fetcher = useSubmit();
   const { data: ensAvatar } = useEnsAvatar({ addressOrName: account?.address });
   const { data: ensName } = useEnsName({ address: account?.address });
   const actions = useGlobalStateUpdater();
@@ -35,9 +36,9 @@ const ConnectWallet: FC = () => {
 
   if (!account.isConnected) return <ConnectWalletButton />;
 
-  const handleDisconnect = async () => {
-    actions.disconnectWallet();
+  const handleDisconnect = () => {
     disconnect();
+    actions.disconnectWallet();
   };
 
   return (
