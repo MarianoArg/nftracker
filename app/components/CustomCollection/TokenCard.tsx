@@ -27,7 +27,8 @@ export default function TokenCard({
       },
     });
 
-  let className = "relative canvas-field flex shadow-md";
+  let className =
+    "relative canvas-field flex shadow-md justify-center items-center";
   if (overlay) {
     className += " overlay";
   }
