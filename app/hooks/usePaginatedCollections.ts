@@ -8,14 +8,14 @@ import useSWRInfinite from "swr/infinite";
 import setParams from "~/lib/params";
 import type { paths } from "@reservoir0x/reservoir-kit-client";
 
-const baseURL =
-  typeof process !== "undefined"
-    ? process.env.RESERVOIR_BASE_URL
-    : // @ts-ignore
-      window.ENV.RESERVOIR_BASE_URL;
-
 export default function usePaginatedCollections(fallback?: Collections) {
   const { ref, inView } = useInView();
+
+  const baseURL =
+    typeof process !== "undefined"
+      ? process.env.RESERVOIR_BASE_URL
+      : // @ts-ignore
+        window.ENV.RESERVOIR_BASE_URL;
 
   const pathname = `${baseURL ?? "https://api.reservoir.tools"}/collections/v5`;
   const [searchParams] = useSearchParams();

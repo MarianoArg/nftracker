@@ -9,7 +9,7 @@ export default async function fetcher(href: string) {
   const reservoirApiKey =
     typeof process !== "undefined"
       ? process.env.RESERVOIR_API_KEY
-      : // @ts-nocheck
+      : // @ts-ignore
         window.ENV.RESERVOIR_API_KEY;
 
   if (reservoirApiKey) {
