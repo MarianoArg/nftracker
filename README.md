@@ -1,4 +1,9 @@
-# Intro
+# NFTracker
+
+![NFTracker](https://user-images.githubusercontent.com/10810691/198749001-479101ef-3245-4c24-86a7-6c4b0ae74acb.png)
+Go and try the live version of [NFTracker](https://nftracker.fly.dev/).
+
+## Intro
 
 This project was bootstrapped with the [Blues Stack](https://github.com/remix-run/blues-stack) by Remix.
 
