@@ -25,8 +25,8 @@ export default function Dialog({
     <AlertDialog.Root open={open}>
       <AlertDialog.Trigger asChild>{children}</AlertDialog.Trigger>
       <AlertDialog.Portal>
-        <AlertDialog.Overlay className="fixed inset-0 z-[9999] bg-[#100E1A]/80" />
-        <AlertDialog.Content className="fixed top-2/4 left-2/4 z-[99991] flex -translate-y-1/2 -translate-x-1/2 flex-col gap-4 rounded-md bg-[#22263c] p-5 tracking-wider shadow-md	">
+        <AlertDialog.Overlay className="fixed inset-0 z-[9999] bg-primary-blue/80" />
+        <AlertDialog.Content className="fixed top-2/4 left-2/4 z-[99991] flex w-full max-w-sm -translate-y-1/2 -translate-x-1/2 flex-col gap-4 rounded-md bg-secondary-blue p-5 tracking-wider shadow-md sm:max-w-xl lg:max-w-3xl">
           {title && (
             <AlertDialog.Title className="mb-2 text-slate-100">
               {title}
@@ -41,7 +41,7 @@ export default function Dialog({
             <AlertDialog.Cancel asChild>
               <button
                 onClick={onCancel}
-                className="rounded-md border border-slate-300 bg-[#22263c]/10 px-3 py-2 tracking-wider text-slate-200 outline-none hover:bg-slate-600"
+                className="rounded-md border border-slate-300 bg-secondary-blue/10 px-3 py-2 tracking-wider text-slate-200 outline-none hover:bg-slate-600"
               >
                 {cancelText ?? "Cancel"}
               </button>

@@ -45,7 +45,7 @@ const ConnectWallet: FC = () => {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger
         name="wallet-address"
-        className="btn-primary-outline dark:ring-primary-900 ml-auto rounded-full border-transparent bg-gray-100 px-2 py-2 normal-case dark:border-neutral-600 dark:bg-[#22263c] dark:focus:ring-4"
+        className="btn-primary-outline dark:ring-primary-900 ml-auto rounded-full border-transparent bg-gray-100 px-2 py-2 normal-case dark:border-neutral-600 dark:bg-secondary-blue dark:focus:ring-4"
       >
         <EthAccount
           address={account.address}
@@ -57,7 +57,7 @@ const ConnectWallet: FC = () => {
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Content align="end" sideOffset={6}>
-        <div className="radix-side-bottom:animate-slide-down flex w-48 flex-col space-y-1 rounded border border-[#CE66ED] bg-white px-1.5 py-2 text-white shadow-md dark:bg-[#22263c] md:w-56">
+        <div className="radix-side-bottom:animate-slide-down flex w-48 flex-col space-y-1 rounded border border-neon-pink bg-white px-1.5 py-2 text-white shadow-md dark:bg-secondary-blue md:w-56">
           <div className="group flex w-full items-center justify-between rounded px-4 py-3 outline-none transition">
             <span>Balance </span>
             <span>

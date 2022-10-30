@@ -40,17 +40,17 @@ export default function CollectionDetailsPage() {
   return (
     <>
       <div className="flex w-full justify-between py-8">
-        <h3 className="text-3xl font-bold">My Collections</h3>
+        <h3 className="text-xl font-bold sm:text-3xl">My Collections</h3>
         <Link
           to={`/collections/new`}
           title="Create Collection"
-          className="flex items-center justify-center rounded-full bg-gradient-to-tr from-[#622ADB] to-[#CE66ED] p-0.5 text-3xl"
+          className="flex items-center justify-center rounded-full bg-gradient-to-tr from-neon-purple to-neon-pink p-0.5 text-xl sm:text-3xl"
         >
           <RiAddCircleLine />
         </Link>
       </div>
       {data.collections.length > 0 ? (
-        <div className="flex w-full flex-col gap-4">
+        <div className="flex w-full flex-col gap-4 rounded-md bg-secondary-blue p-3 md:p-6">
           {data.collections.map((collection) => (
             <CollectionCard
               key={collection.id}
@@ -59,7 +59,7 @@ export default function CollectionDetailsPage() {
           ))}
         </div>
       ) : (
-        <div className="flex flex-col items-center gap-2 py-14 text-[#22263c]">
+        <div className="flex flex-col items-center gap-2 py-14 text-primary-blue">
           <h4 className="text-2xl">You have no Collections yet</h4>
           <p className="text-xl">Create your first one!</p>
         </div>

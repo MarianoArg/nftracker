@@ -32,13 +32,14 @@ export default function CollectionSelect({ onCollectionChange }: SelectProps) {
   };
 
   return (
-    <div className="w-full rounded-md bg-[#22263c] p-2 text-white">
+    <div className="w-full rounded-md bg-secondary-blue p-2 text-white">
       <Select.Root
         onValueChange={handleChange}
+        disabled={mappedCollections.length === 0}
         value={draftCollection.collectionId ?? undefined}
       >
         <Select.Trigger asChild>
-          <button className="relative flex w-full items-center justify-between gap-2 overflow-hidden rounded-md bg-[#100E1A] px-3 py-2 outline-none">
+          <button className="relative flex w-full items-center justify-between gap-2 overflow-hidden rounded-md bg-primary-blue px-3 py-2 outline-none disabled:bg-slate-800 disabled:text-white/70">
             {selectedCollection?.image && (
               <img
                 alt={`${selectedCollection?.name} logo`}
@@ -59,7 +60,7 @@ export default function CollectionSelect({ onCollectionChange }: SelectProps) {
 
         <Select.Portal>
           <Select.Content asChild>
-            <div className="relative z-40 max-w-[300px] bg-[#22263c] p-2">
+            <div className="relative z-40 w-full bg-secondary-blue p-2 lg:max-w-[300px]">
               <Select.ScrollUpButton />
               <Select.Viewport className="flex w-full flex-col gap-2">
                 {mappedCollections?.map((collection, index, arr) => (
@@ -70,7 +71,7 @@ export default function CollectionSelect({ onCollectionChange }: SelectProps) {
                   >
                     <div
                       ref={index === arr.length - 5 ? ref : undefined}
-                      className="flex w-full max-w-[300px] shrink-0 grow cursor-pointer items-center gap-2 truncate rounded bg-[#100E1A] px-3 py-2 text-sm text-white	hover:border-0 hover:bg-[#1a1a2a] hover:outline-none"
+                      className="flex w-full shrink-0 grow cursor-pointer items-center gap-2 truncate rounded bg-primary-blue px-3 py-2 text-sm text-white hover:border-0	hover:bg-[#1a1a2a] hover:outline-none lg:max-w-[300px]"
                     >
                       <img
                         alt={`${collection?.name} logo`}

@@ -18,9 +18,9 @@ const CollectionSidebar: FC<SidebarProps> = ({
   return (
     <div
       key={fieldsRegKey}
-      className="flex w-80 shrink-0 grow flex-col rounded-md bg-gradient-to-tr from-[#622ADB] to-[#CE66ED] p-px"
+      className="flex w-full shrink-0 grow flex-col rounded-md bg-gradient-to-tr from-neon-purple to-neon-pink p-px lg:w-80"
     >
-      <div className="flex w-full grow flex-col gap-6 rounded-md bg-[#100E1A] px-3 pt-8 pb-3 text-white">
+      <div className="flex w-full grow flex-col gap-3 rounded-md bg-primary-blue px-3 pt-4 pb-3 text-white lg:gap-6 lg:pt-8">
         <div className="items-left flex w-full flex-col gap-2">
           <span className="">Select a collection</span>
           <CollectionSelect

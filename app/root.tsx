@@ -133,7 +133,7 @@ export default function App() {
           rel="stylesheet"
         />
       </head>
-      <body className="h-full bg-[#100E1A] font-righteous">
+      <body className="h-full bg-primary-blue font-righteous">
         <script
           dangerouslySetInnerHTML={{
             __html: `window.ENV = ${JSON.stringify(ENV)}`,

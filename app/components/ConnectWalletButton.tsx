@@ -30,7 +30,7 @@ const ConnectWalletButton: FC<Props> = ({ className }) => {
                 <button
                   onClick={openConnectModal}
                   type="button"
-                  className={`rounded-md bg-gradient-to-tr from-[#622ADB] to-[#CE66ED] px-6 py-4 text-sm tracking-wider text-white hover:from-green-400 hover:to-blue-500 ${className}`}
+                  className={`rounded-md bg-gradient-to-tr from-neon-purple to-neon-pink px-6 py-4 text-sm tracking-wider text-white hover:from-green-400 hover:to-blue-500 ${className}`}
                 >
                   Connect Wallet
                 </button>

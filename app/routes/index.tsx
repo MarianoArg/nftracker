@@ -50,26 +50,28 @@ export default function Index() {
   const isSmallDevice = useMediaQuery("only screen and (max-width : 600px)");
   const data = useLoaderData<typeof loader>();
   return (
-    <div className="min-h-screen w-full bg-[#100E1A]">
+    <div className="min-h-screen w-full bg-primary-blue">
       <main className="relative min-h-screen w-full flex-col sm:flex sm:items-center sm:justify-center">
-        <div className="relative mt-8 flex w-full justify-between sm:mt-20 sm:max-w-screen-2xl sm:px-32 sm:pb-16 sm:pt-8">
-          <div className="w-9/12 text-7xl text-white sm:max-w-[700px]">
+        <div className="relative mt-8 flex w-full justify-between px-8 pb-6 sm:mt-20 sm:max-w-screen-2xl sm:px-32 sm:pb-16 sm:pt-8">
+          <div className="w-9/12 text-4xl text-white sm:max-w-[700px] md:text-5xl lg:text-7xl">
             <h2>
               Create and Track your own{" "}
-              <span className="bg-gradient-to-r from-[#CE66ED] to-[#7F6BC8] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-neon-pink to-light-purple bg-clip-text text-transparent">
                 NFT
               </span>{" "}
               collections.
             </h2>
           </div>
         </div>
-        <div className="relative flex w-full flex-col justify-between sm:max-w-screen-2xl sm:px-32 sm:pb-16 sm:pt-8">
-          <div className="mb-9 flex w-full items-center justify-between">
-            <h3 className="text-3xl dark:text-white">Trending Collections</h3>
+        <div className="relative flex w-full flex-col justify-between px-8 sm:max-w-screen-2xl sm:px-32 sm:pb-16 sm:pt-8">
+          <div className="mb-4 flex w-full items-center justify-between md:mb-9">
+            <h3 className="text-xl dark:text-white md:text-3xl">
+              Trending Collections
+            </h3>
             {!isSmallDevice && <SortTrendingCollections />}
           </div>
-          <div className="w-full rounded-md bg-gradient-to-tr from-[#622ADB] to-[#CE66ED] p-px sm:max-w-screen-2xl">
-            <div className="rounded-md bg-[#22263c] p-8">
+          <div className="w-full rounded-md bg-gradient-to-tr from-neon-purple to-neon-pink p-px sm:max-w-screen-2xl">
+            <div className="rounded-md bg-secondary-blue p-8">
               <TrendingCollectionTable fallback={data.fallback} />
             </div>
           </div>

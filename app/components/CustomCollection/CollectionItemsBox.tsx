@@ -22,7 +22,6 @@ export default function CollectionItemsBox({
   const transition = useTransition();
   const submit = useSubmit();
   const [title, setTitle] = React.useState<string>(collectionTitle ?? "");
-  console.log("transition state", transition);
   const { setNodeRef } = useDroppable({
     id: "collection-board-droppable",
     data: {
@@ -50,8 +49,8 @@ export default function CollectionItemsBox({
   const buttonText = collectionId ? "Update" : "Create";
 
   return (
-    <div className="flex w-full grow flex-col rounded-md bg-gradient-to-tr from-[#622ADB] to-[#CE66ED] p-px">
-      <div className="flex grow flex-col rounded-md bg-[#100E1A] px-3 pt-8 pb-3">
+    <div className="flex w-full flex-col rounded-md bg-gradient-to-tr from-[#622ADB] to-[#CE66ED] p-px">
+      <div className="flex grow flex-col rounded-md bg-[#100E1A] px-3 pt-4 pb-3 lg:pt-8">
         <div className="flex w-full">
           <Form
             className="flex w-full justify-between gap-2"
@@ -90,17 +89,18 @@ export default function CollectionItemsBox({
           </Form>
         </div>
         <ScrollArea.Root
-          className="mt-4 box-border h-[700px] w-full overflow-hidden rounded bg-[#22263c] p-2"
+          className="mt-4 box-border h-[450px] w-full overflow-hidden rounded bg-[#22263c] p-2 lg:h-[700px]"
           ref={setNodeRef}
         >
           <ScrollArea.Viewport className="flex h-full w-full">
-            <div className="grid grid-cols-2 items-start gap-2 xl:grid-cols-3 2xl:grid-cols-4">
+            <div className="grid grid-cols-2 items-start justify-items-center gap-2 xl:grid-cols-3 2xl:grid-cols-4">
               {collectionItems?.map((item, index) => (
                 <TokenCard
                   key={item?.id}
                   tokenInfo={item}
                   index={index}
                   onDelete={onDelete}
+                  mode="edit"
                 />
               ))}
             </div>

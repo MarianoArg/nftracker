@@ -30,7 +30,7 @@ const SortTrendingCollections: FC = () => {
 
   return (
     <DropdownMenu.Root onOpenChange={setOpen}>
-      <DropdownMenu.Trigger className="flex w-[228px] justify-between rounded-md px-4 py-3 outline-none outline-[#CE66ED]">
+      <DropdownMenu.Trigger className="flex w-[228px] justify-between rounded-md px-4 py-3 outline-none outline-neon-pink">
         <span className="reservoir-label-l dark:text-gray-100">
           {sortSelection}
         </span>

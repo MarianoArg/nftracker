@@ -215,24 +215,24 @@ export default function CollectionBuilder({
 
   return (
     <div className="flex h-full w-full grow flex-col gap-4">
-      <div className="mb-4 flex w-full w-full items-center justify-between">
-        <h3 className="text-3xl dark:text-white">
+      <div className="mb-2 flex w-full w-full items-center justify-between sm:mb-4">
+        <h3 className="text-xl underline dark:text-white sm:text-3xl">
           {collectionId ? "Edit Collection" : "Create Collection"}
         </h3>
         {collectionId && (
           <Link
             to={`/collections/new`}
             title="Create Collection"
-            className="group flex items-center justify-center gap-2 text-xl hover:underline"
+            className="group flex items-center justify-center gap-2 text-sm hover:underline sm:text-xl"
           >
             New
-            <span className="rounded-full from-[#622ADB] to-[#CE66ED] p-0.5 text-3xl text-[#CE66ED] group-hover:bg-gradient-to-tr group-hover:text-white ">
+            <span className="rounded-full from-neon-purple to-neon-pink p-0.5 text-3xl text-neon-pink group-hover:bg-gradient-to-tr group-hover:text-white ">
               <RiAddCircleLine />
             </span>
           </Link>
         )}
       </div>
-      <div className="flex h-full w-full grow gap-4">
+      <div className="flex h-full w-full grow flex-col gap-2 lg:flex-row lg:gap-4">
         <DndContext
           onDragStart={handleDragStart}
           onDragOver={handleDragOver}
@@ -263,6 +263,7 @@ export default function CollectionBuilder({
               <TokenCard
                 onDelete={handleDeleteToken}
                 overlay
+                mode="edit"
                 tokenInfo={activeToken}
               />
             ) : null}
