@@ -67,7 +67,7 @@ export default function TokenDetail({ token, children }: TokenDetailProps) {
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-[9999] bg-primary-blue/80" />
         <Dialog.Content asChild>
-          <div className="fixed top-2/4 left-2/4 z-[99991] flex max-h-screen w-full max-w-[380px] -translate-y-1/2 -translate-x-1/2 flex-col overflow-y-auto overscroll-contain rounded-md bg-white p-2 tracking-wider shadow-md">
+          <div className="fixed top-2/4 left-2/4 z-[99991] flex max-h-[100%] w-full max-w-[380px] -translate-y-1/2 -translate-x-1/2 flex-col overflow-y-auto overscroll-contain rounded-md bg-white p-2 tracking-wider shadow-md">
             <Dialog.Close asChild>
               <button className="absolute top-1.5 right-1.5 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-xl hover:bg-light-purple/30">
                 <RiCloseLine />
