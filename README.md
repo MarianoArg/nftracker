@@ -1,6 +1,6 @@
 # NFTracker
 
-![NFTracker](https://user-images.githubusercontent.com/10810691/198749001-479101ef-3245-4c24-86a7-6c4b0ae74acb.png)
+![NFTracker](https://user-images.githubusercontent.com/10810691/198905991-a95a1101-38b3-4549-a870-6451e99bd293.png)
 Go and try the live version of [NFTracker](https://nftracker.fly.dev/).
 
 ## Intro
