@@ -57,7 +57,9 @@ export default function CollectionItemsBox({
             onSubmit={handleSubmit}
             method="post"
             action={
-              collectionId ? `/collections/${collectionId}` : "/collections/new"
+              collectionId
+                ? `/collections/${collectionId}/edit`
+                : "/collections/new"
             }
           >
             <input
