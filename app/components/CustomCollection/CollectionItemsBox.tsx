@@ -93,7 +93,7 @@ export default function CollectionItemsBox({
           ref={setNodeRef}
         >
           <ScrollArea.Viewport className="flex h-full w-full">
-            <div className="grid grid-cols-2 items-start justify-items-center gap-2 xl:grid-cols-3 2xl:grid-cols-4">
+            <div className="grid grid-cols-1 items-start justify-items-center gap-2 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
               {collectionItems?.map((item, index) => (
                 <TokenCard
                   key={item?.id}
