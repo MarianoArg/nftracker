@@ -22,7 +22,7 @@ Besides the [original Remix stack](https://github.com/remix-run/blues-stack#what
 
 ## Why this stack?
 
-[Remix](https://remix.run/) is one of the most popular full-stack web frameworks nowadays. I never had a chance of trying it before, so I used this takefom as an oportunity to discover it. But this desition has it outcomes, every example and documentation of the Web3 tools used in this project was focused on NextJs, so some research was needed to make these tools to work.
+[Remix](https://remix.run/) is one of the most popular full-stack web frameworks nowadays. I never had a chance of trying it before, so I used this challenge as an oportunity to discover it. But this desition has it outcomes, every example and documentation of the Web3 tools used in this project was focused on NextJs, so some research was needed to make these tools to work.
 
 Before this project, I had no idea at all (and I still don't lol) about Web3 and the tools used on these kind of projects, so after some research I found [RainbowKit](https://www.rainbowkit.com/) and [Wagmi](https://wagmi.sh/) as some standars, and after some pitfalls I found the final results decent enough for this small demo.
 
