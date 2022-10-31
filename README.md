@@ -5,7 +5,7 @@ Go and try the live version of [NFTracker](https://nftracker.fly.dev/).
 
 ## Intro
 
-This is project is the resolution of the [frontend takehome](https://github.com/pixeldaogg/frontend-takehome) for Pixel.
+This is project is the resolution of the [frontend takehome](https://github.com/pixeldaogg/frontend-takehome) for Pixel.   
 This project was bootstrapped with the [Blues Stack](https://github.com/remix-run/blues-stack) by Remix.
 
 ## What's in the stack
