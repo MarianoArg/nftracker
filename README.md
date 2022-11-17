@@ -5,7 +5,6 @@ Go and try the live version of [NFTracker](https://nftracker.fly.dev/).
 
 ## Intro
 
-This is project is the resolution of the [frontend takehome](https://github.com/pixeldaogg/frontend-takehome) for Pixel.   
 This project was bootstrapped with the [Blues Stack](https://github.com/remix-run/blues-stack) by Remix.
 
 ## What's in the stack
@@ -32,7 +31,7 @@ In regards to the **drag-&-drop** functionallity, I find [dnd-kit](https://dndki
 
 #### What about the design?
 
-I used the [original wireframes in the takehome description](https://github.com/pixeldaogg/frontend-takehome) as a base, and added some styles over them. For this I did some research on web3 sites to understand a bit more about the patters used.
+For this I did some research on web3 sites to understand a bit more about the patters used.
 
 ## Development
 
