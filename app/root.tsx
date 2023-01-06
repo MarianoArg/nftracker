@@ -8,6 +8,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useLocation,
 } from "@remix-run/react";
 
 import tailwindStylesheetUrl from "./styles/tailwind.css";
@@ -26,6 +27,7 @@ import {
 import { GlobalStateProvider } from "~/context";
 import rainbowKitStyles from "@rainbow-me/rainbowkit/styles.css";
 
+import type { AuthenticationStatus } from "@rainbow-me/rainbowkit";
 import {
   getDefaultWallets,
   RainbowKitProvider,
@@ -38,6 +40,7 @@ import { getUserAddress } from "./session.server";
 import Footer from "~/components/Footer";
 import { ToastProvider } from "~/components/Toast";
 import React from "react";
+import * as gtag from "./gtags.client";
 
 export const links: LinksFunction = () => {
   return [
@@ -49,7 +52,7 @@ export const links: LinksFunction = () => {
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "Pixel Challenge",
+  title: "NFTracker",
   viewport: "width=device-width,initial-scale=1",
 });
 
@@ -70,7 +73,10 @@ const theme = darkTheme({
 });
 
 export default function App() {
-  const { ENV, status } = useLoaderData();
+  const { ENV, status } = useLoaderData<typeof loader>();
+  const location = useLocation();
+
+  const gaTrackingId = ENV.GA_TRACKING_ID;
 
   // Remix modules cannot have side effects so the initialization of `wagmi`
   // client happens during render, but the result is cached via `useState`
@@ -101,7 +107,7 @@ export default function App() {
 
     // Set up connectors
     const { connectors } = getDefaultWallets({
-      appName: "Pixel Challenge",
+      appName: "NFTracker",
       chains,
     });
 
@@ -116,6 +122,12 @@ export default function App() {
       chains,
     };
   });
+
+  React.useEffect(() => {
+    if (gaTrackingId?.length) {
+      gtag.pageview(location.pathname, gaTrackingId);
+    }
+  }, [location, gaTrackingId]);
 
   return (
     <html lang="en" className="h-full">
@@ -151,7 +163,7 @@ export default function App() {
               theme={theme}
             >
               <WagmiConfig client={wagmiClient}>
-                <RainbowKitAuthProvider status={status}>
+                <RainbowKitAuthProvider status={status as AuthenticationStatus}>
                   <RainbowKitProvider
                     chains={chains}
                     theme={rainbowKitDarkTheme()}
