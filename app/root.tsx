@@ -76,8 +76,6 @@ export default function App() {
   const { ENV, status } = useLoaderData<typeof loader>();
   const location = useLocation();
 
-  const gaTrackingId = ENV.GA_TRACKING_ID;
-
   // Remix modules cannot have side effects so the initialization of `wagmi`
   // client happens during render, but the result is cached via `useState`
   // and a lazy initialization function.
@@ -124,10 +122,10 @@ export default function App() {
   });
 
   React.useEffect(() => {
-    if (gaTrackingId?.length) {
-      gtag.pageview(location.pathname, gaTrackingId);
+    if (ENV.GA_TRACKING_ID?.length) {
+      gtag.pageview(location.pathname, ENV.GA_TRACKING_ID);
     }
-  }, [location, gaTrackingId]);
+  }, [location, ENV.GA_TRACKING_ID]);
 
   return (
     <html lang="en" className="h-full">
@@ -151,11 +149,12 @@ export default function App() {
             __html: `window.ENV = ${JSON.stringify(ENV)}`,
           }}
         />
-        {process.env.NODE_ENV === "development" || !gaTrackingId ? null : (
+        {process.env.NODE_ENV === "development" ||
+        !ENV.GA_TRACKING_ID ? null : (
           <>
             <script
               async
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${ENV.GA_TRACKING_ID}`}
             />
             <script
               async
@@ -165,9 +164,7 @@ export default function App() {
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${gaTrackingId}', {
-                  page_path: window.location.pathname,
-                });
+                gtag('config', '${ENV.GA_TRACKING_ID}');
               `,
               }}
             />
