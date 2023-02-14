@@ -1,7 +1,7 @@
 # NFTracker
 
 ![NFTracker](https://user-images.githubusercontent.com/10810691/198905991-a95a1101-38b3-4549-a870-6451e99bd293.png)
-Go and try the live version of [NFTracker](https://nftracker.fly.dev/).
+Go and try the live version of [NFTracker](https://nftracker.marianoarg.dev/).
 
 ## Intro
 
