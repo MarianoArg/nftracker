@@ -2,7 +2,7 @@ app = "nftracker"
 
 kill_signal = "SIGINT"
 kill_timeout = 5
-processes = []
+## processes = []
 
 [env]
   PORT = "8080"
@@ -21,7 +21,7 @@ processes = []
 
 [[services]]
   internal_port = 8080
-  processes = ["app"]
+  ## processes = ["app"]
   protocol = "tcp"
   script_checks = []
 
