@@ -24,7 +24,7 @@ const FormatCrypto: FC<Props> = ({
       {address && (
         <img
           src={logoUrl}
-          alt="Currency Logo"
+          alt="Crypto currency Logo"
           style={{ width: `${logoWidth}px` }}
         />
       )}

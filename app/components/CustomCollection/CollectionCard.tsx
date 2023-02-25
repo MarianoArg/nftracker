@@ -46,6 +46,7 @@ export default function CollectionCard({ collection }: CollectionCardProps) {
           className="h-full w-full object-cover"
           src={collectionImage ?? CollectionPlaceholder}
           alt={`${collection.title}`}
+          title="Token collection image"
         />
         <div className="absolute inset-0 bg-[color:rgba(254,204,27,0.5)] mix-blend-saturation" />
       </Link>

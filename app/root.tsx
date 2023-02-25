@@ -52,8 +52,19 @@ export const links: LinksFunction = () => {
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "NFTracker",
+  title: "NFTracker | Create and track your custom NFT collections",
   viewport: "width=device-width,initial-scale=1",
+  description:
+    "Login with your Etherum wallet, create and track your custom NFT collections.",
+  keywords:
+    "web3, eth, etherum, NFT, nft, collection, tracker, crypto, cryptocurrency, blockchain",
+  "og:title": "NFTracker | Create and track your custom NFT collections",
+  "og:url": "https://nftracker.marianoarg.dev/",
+  "og:description":
+    "Login with your Etherum wallet, create and track your custom NFT collections.",
+  "og:type": "website",
+  "og:site_name": "NFTracker",
+  "og:locale": "en_US",
 });
 
 export async function loader({ request }: LoaderArgs) {
